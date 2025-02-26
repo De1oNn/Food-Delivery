@@ -15,7 +15,7 @@ mongoose.connect(process.env.MONGODB_URI).then(() => {
 });
 
 app.use("/user", userRouter);
-app.use("/food", foodRouter)
+app.use("/food", foodRouter);
 
 app.listen(PORT, () => {
   console.log(`Running on port ${PORT}`);
