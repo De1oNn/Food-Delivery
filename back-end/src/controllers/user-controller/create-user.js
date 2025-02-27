@@ -1,16 +1,32 @@
+import bcrypt from "bcrypt";
 import { UserModel } from "../../models/user.model.js";
 
 export const createUser = async (req, res) => {
   try {
-    const { password } = req.body;
-    const updatedPassword = password;
+    const { email, password } = req.body;
 
-    const newUser = await UserModel.create({
-      ...req.body,
-      password: updatedPassword,
+    if (!email || !password) {
+      return res
+        .status(400)
+        .json({ message: "Email and password are required" });
+    }
+
+    const existingUser = await UserModel.findOne({ email });
+    if (existingUser) {
+      return res.status(400).json({ message: "Email already in use" });
+    }
+
+    const hashedPassword = await bcrypt.hash(password, 10);
+    await UserModel.create({ email, password: hashedPassword });
+
+    res.status(202).json({
+      message: "User signed up successfully",
+      user: { email },
     });
-    res.send({ message: "User created successfully", newUser });
-  } catch (error) {
-    res.json(error);
+  } catch (err) {
+    res.status(500).json({
+      message: "Server error",
+      error: err.message,
+    });
   }
 };

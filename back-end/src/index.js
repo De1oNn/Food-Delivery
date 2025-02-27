@@ -16,10 +16,10 @@ mongoose.connect(process.env.MONGODB_URI).then(() => {
   console.log("Connected to MongoDB");
 });
 
-app.use("/user", userRouter);
+app.use("/auth", userRouter);
 app.use("/food", foodRouter);
 app.use("/food-category", categoryRouter)
-app.use("food-order", foodOrderRouter)
+app.use("/food-order", foodOrderRouter)
 
 app.listen(PORT, () => {
   console.log(`Running on port ${PORT}`);

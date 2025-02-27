@@ -5,8 +5,8 @@ const userSchema = new Schema(
     id: { type: Schema.Types.ObjectId },
     email: { type: String, required: true },
     password: { type: String, required: true },
-    phoneNumber: { type: String, required: true },
-    address: { type: String, required: true },
+    phoneNumber: { type: String, },
+    address: { type: String,  },
     role: {
       type: String,
       enum: ["ADMIN", "USER"],
