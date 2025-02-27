@@ -3,7 +3,6 @@ import { UserModel } from "../../models/user.model.js";
  export const getUser = async (req, res) => {
     try {
         const userId = req.params.id;
-        // const userId = UserModel{ gmail }
         const user = await UserModel.findById(userId).populate("")
         if (!user) {
             return res.status(404).json({ message: "User not found" });
