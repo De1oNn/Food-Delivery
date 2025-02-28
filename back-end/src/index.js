@@ -17,8 +17,8 @@ mongoose.connect(process.env.MONGODB_URI).then(() => {
 });
 
 app.use(cors());
-app.get("/test", (req, res) => {
-  res.json({ message: "Hello from backend" });
+app.get("/api/hello", (req, res) => {
+  res.json({ message: "Hello from Express!" });
 });
 
 app.use("/auth", userRouter);

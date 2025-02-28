@@ -1,0 +1,18 @@
+{
+  "name": "food_delivery",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start:back-end": "cd back-end && npm start",
+    "start:admin-front-end": "cd admin-front-end && npm run dev",
+    "start:client-front-end": "cd client-front-end && npm run dev",
+    "start": "concurrently \"npm run start:back-end\" \"npm run start:admin-front-end\" \"npm run start:client-front-end\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
