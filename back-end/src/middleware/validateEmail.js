@@ -1,4 +1,4 @@
-import jwt from "jsonwebtoken";
+// import jwt from "jsonwebtoken";
 
 function validateEmail(email) {
   var re = /\S+@\S+\.\S+/;
